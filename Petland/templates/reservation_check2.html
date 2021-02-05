@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+<head>
+    {% block extrahead %}
+    <title>Petland > 예약확인</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/reservation2.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+    {% block section %}
+    <section id="form">
+        <div class="sistemap">
+        </div>
+        <div class="container">
+            <div class="title">
+                <h1 class="text-extra-lg">예약정보</h1>
+                <div class="line"></div>
+            </div>
+            <h2 class="check">예약확인</h2><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>회원번호</th>
+                        <th>이름</th>
+                        <th>전화번호</th>
+                        <th>반려동물</th>
+                        <th>서비스</th>
+                        <th>예약일</th>
+                        <th>예약시간</th>
+                        <th>담당 펫시터</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ content | safe }}
+                </tbody>
+            </table>
+            <br>
+            <button class="Enter cancleBtn" type="button">예약 취소하기</button>
+        </div>
+    </section>
+    {% endblock %}
+    {% block script %}
+    <script>
+        const button = document.querySelector("cancleBtn");
+
+    </script>
+    {% endblock %}
+</body>
+
+</html>

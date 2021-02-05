@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+<head>
+    {% block extrahead %}
+    <title>Petland > 예약하기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/reservation.css') }}">
+    <script src="https://kit.fontawesome.com/72c88d65e7.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {% endblock %}
+</head>
+
+<body>
+    {% block section %}
+    <section id="form">
+        <div class="sistemap">
+        </div>
+        <div class="container">
+            <div class="title">
+                <h1 class="text-extra-lg">예약하기</h1>
+                <div class="line"></div>
+            </div>
+        </div>
+        <div class="container two">
+            <form action="/reservation" method="POST" class="text-md" id="form" name="form">
+
+                <!-- name -->
+                <label for="name"><span class="name_main item">이름</span></label>
+                <br>
+                <input type="text" id="name" name="name" required><br>
+
+                <!-- phone  -->
+                <label for="phone"><span class="phone_main item">전화번호</span></label>
+                <br>
+                <input type="phone" id="phone" name="phone" placeholder="번호만 입력하세요" pattern="[0-9]{3}[0-9]{4}[0-9]{4}"
+                    required>
+                <br>
+
+                <!-- Pet -->
+                <span class=" pet_main item">애완동물</span><br>
+                <label class="pet_sub">
+                    <input type="radio" id="pet" name="pet" value="dog" />강아지&nbsp;&nbsp;
+                    <input type="radio" id="pet" name="pet" value="cat" />고양이
+                </label>
+                <br>
+
+                <!-- service -->
+                <span class="service_main item">서비스</span><br>
+                <div class="service">
+                    <input type="checkbox" id="service" name="service" value="walk" />
+                    <span class="service_sub">산책&nbsp;</span>
+                    <input type="checkbox" id="service" name="service" value="home" />
+                    <span class="service_sub">가정돌봄&nbsp;</span>
+                    <input type="checkbox" id="service" name="service" value="training" />
+                    <span class="service_sub">훈련</span>
+                </div><br>
+
+                <!-- date -->
+                <label for="date"><span class="date_main item">날짜</span></label>
+                <br>
+                <input type='date' id="date" value='2020-10-01' name="date" /><br>
+
+                <!-- time -->
+
+                <h1 class="open text-sm">Petland Time 09:00 ~ 19:00</h1>
+                <i class="fas fa-angle-down"></i><br>
+                <div class="time_main">
+                    <label for="time"></label>
+                    <input type="checkbox" id="time" name="time" value="09" />
+                    <span>09:00~10:00&nbsp;</span>
+                    <input type="checkbox" id="time" name="time" value="10" />
+                    <span>10:00~11:00&nbsp;</span>
+                    <input type="checkbox" id="time" name="time" value="11" />
+                    <span>11:00~12:00</span><br><br>
+                    <input type="checkbox" id="time" name="time" value="13" />
+                    <span>13:00~14:00&nbsp;</span>
+                    <input type="checkbox" id="time" name="time" value="14" />
+                    <span>14:00~15:00&nbsp;</span>
+                    <input type="checkbox" id="time" name="time" value="15" />
+                    <span>15:00~16:00</span><br><br>
+                    <input type="checkbox" id="time" name="time" value="16" />
+                    <span>16:00~17:00&nbsp;</span>
+                    <input type="checkbox" id="time" name="time" value="17" />
+                    <span>17:00~18:00&nbsp;</span>
+                    <input type="checkbox" id="time" name="time" value="18" />
+                    <span>18:00~19:00</span>
+                </div>
+                <input class="address_im" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input class="address_postcode" type="text" id="postcode" name="postcode" placeholder="우편번호" readonly><br>
+                <input class="address_road" type="text" id="roadaddress" name="roadaddress" placeholder="도로명주소" readonly><br>
+                <span id="guide" style="color:#999;display:none"></span>
+                <input class="address_detail" type="text" id="detailaddress" name="detailaddress" placeholder="상세주소"
+                    required readonly><br>
+
+                <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                <script>
+                    function sample4_execDaumPostcode() {
+                        new daum.Postcode({
+                            oncomplete: function (data) {
+                                var roadAddr = data.roadAddress;
+                                var extraRoadAddr = '';
+                                if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                                    extraRoadAddr += data.bname;
+                                }
+                                if (data.buildingName !== '' && data.apartment === 'Y') {
+                                    extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                }
+                                if (extraRoadAddr !== '') {
+                                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                                }
+                                document.getElementById('postcode').value = data.zonecode;
+                                document.getElementById("roadaddress").value = roadAddr
+
+                                if (roadAddr !== '') {
+                                    document.getElementById("detailaddress").value = extraRoadAddr;
+                                } else {
+                                    document.getElementById("detailaddress").value = '';
+                                }
+
+                                var guideTextBox = document.getElementById("guide");
+                                if (data.autoRoadAddress) {
+                                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                                    guideTextBox.style.display = 'block';
+                                } else {
+                                    guideTextBox.innerHTML = '';
+                                    guideTextBox.style.display = 'none';
+                                }
+                            }
+                        }).open();
+                    }
+                </script>
+                <br>
+                <button class="Enter submitBtn" type="button">Petsitter 예약하기</button>
+            </form>
+        </div>
+    </section>
+    {% endblock %}
+    {% block script %}
+    <script>
+        let err = "{{ err | safe}}";
+        if (!(err == "")) {
+            alert(err);
+        }
+        console.log(err);
+    </script>
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+    {% endblock %}
+</body>
+
+</html>

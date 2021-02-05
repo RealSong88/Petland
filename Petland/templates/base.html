@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/72c88d65e7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/reset.css') }}">
+    <link rel="shortcut icon" href="/static/img/favicon.ico.ico">
+    {% block extrahead %}
+    {% endblock %}
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="header__logo">
+                <a href="/">
+                    <p class="logo">Petland</p>
+                </a>
+            </div>
+            <nav class="header__nav">
+                <ul class="nav__menu text-sm">
+                    <li class="nav__item"><a class="selected" href="/">홈</a></li>
+                    <li class="nav__item"><a href="/reservation">예약하기</a></li>
+                    <li class="nav__item"><a href="/reservation_check">예약 확인</a></li>
+                    <li class="nav__item"><a href="#map">연락하기</a></li>
+                </ul>
+                <div class="nav__toggle text-sm white">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    {% block section %}
+    {% endblock %}
+    <footer id="footer">
+        <div class="container">
+            <div class="footer__button">
+                <a href=""><i class="fas fa-chevron-up"></i></a>
+            </div>
+            <div class="footer__content">
+                <h1 class="text-extra-lg white">펫랜드</h1>
+                <i class="fas fa-paw"></i>
+                <p class="text-md">
+                    (펫)펫피플 주소 : 서울시 냥냥구 멍멍동 12-12 빌딩 3층 (주식회사 펫피플)<br>
+                    사업자 등록번호 : 123-00-12345&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;통신판매업 신고 번호 : 제
+                    2050-서울멍양-03319<br>
+                    "고객센터 문의 : 070 1234 5678 / catdog@grrrr.com"
+                </p>
+            </div>
+            <div class="footer__link">
+                <div class="footer__sns">
+                    <ul>
+                        <li>
+                            <a href="" class="sns sns__face" target="_blank">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="sns sns__insta" target="_blank">
+                                <i class="fab fa-instagram-square"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="sns sns__twetter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="sns sns__facebook">
+                                <i class="fab fa-facebook-square"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__info animate-bottom">
+                    <ul>
+                        <li class="info"><a href="#">안전보상제도</a> </li>
+                        <li class="info"><a href="#">질문과 답변</a> </li>
+                        <li class="info"><a href="#">이용 약관</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/nav_toggle.js') }}"></script>
+    <script>
+        const header = document.querySelector("#header");
+        const headerHeight = header.getBoundingClientRect().height;
+        const footerBtn = document.querySelector(".footer__button");
+        const navbar = document.querySelector(".nav__menu");
+        let current = document.querySelector(".selected");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > headerHeight) {
+                header.setAttribute("style", "background: white;");
+                console.log("big");
+            } else {
+
+                header.setAttribute("style", "background: transparent;");
+            }
+        });
+
+        footerBtn.addEventListener("click", () => {
+            header.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        navbar.addEventListener("click", (e) => {
+            const target = e.target;
+            console.log(target);
+            current.classList.remove("selected");
+            console.log(current);
+            target.classList.add("selected");
+            current = target;
+            console.log(current);
+        });
+    </script>
+    {% block script %}
+    {% endblock %}
+
+</body>
+
+</html>

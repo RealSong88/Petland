@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+<head>
+    {% block extrahead %}
+    <title>Petland > 예약하기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/reservation2.css') }}">
+    {% endblock %}
+</head>
+
+<body>
+    {% block section %}
+    <section id="form">
+        <div class="sistemap">
+        </div>
+        <div class="container">
+            <div class="title">
+                <h1 class="text-extra-lg">예약정보</h1>
+                <div class="line"></div>
+            </div>
+        <h2 class="check">입력정보 확인</h2><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>이름</th>
+                    <th>반려동물</th>
+                    <th>서비스</th>
+                    <th>예약일</th>
+                    <th>예약시간</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ name | safe }}</td>
+                    <td>{{ pet | safe }}</td>
+                    <td>{{ service | safe }}</td>
+                    <td>{{ date | safe }}</td>
+                    <td>{{ time | safe }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <form action="/reservation2" method="POST" name="form">
+            <button class="Enter payBtn" type="button">결제하기</button>
+        </form>
+        </div>
+    </section>
+    {% endblock %}
+    {% block script %}
+    <script>
+        const button = document.querySelector(".payBtn");
+        button.addEventListener('click', () => {
+        const form = document.form;
+        form.submit();
+        });
+    </script>
+    {% endblock %}
+</body>
+
+</html>

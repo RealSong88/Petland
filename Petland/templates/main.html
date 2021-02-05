@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+
+<head>
+    {% block extrahead %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petland</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <script src="https://kit.fontawesome.com/72c88d65e7.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    {% endblock %}
+</head>
+
+<body>
+    {% block section %}
+    <nav id="navbar" class="navbar">
+        <ul class="navbar-menu">
+            <li>
+                <a data-scroll="main" href="#main" class="dot active">
+                    <span>Main</span>
+                </a>
+            </li>
+            <li>
+                <a data-scroll="about" href="#about" class="dot">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a data-scroll="petsitter" href="#petsitter" class="dot">
+                    <span>Petsitter</span>
+                </a>
+            </li>
+            <li>
+                <a data-scroll="colors" href="#colors" class="dot">
+                    <span>Service</span>
+                </a>
+            </li>
+            <li>
+                <a data-scroll="reservation" href="#reservation" class="dot">
+                    <span>Reservation</span>
+                </a>
+            </li>
+            <li>
+                <a data-scroll="contact" href="#map" class="dot">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Main -->
+    <section id="main">
+        <div class="container white">
+            <p class="text-lg white">by PETLAND</p>
+            <h1 class="main__logo">펫시터가 집으로 </h1>
+            <div class="separator white">
+                <div class="line"></div>
+                <i class="fas fa-paw text-extra-lg white"></i>
+                <div class="line"></div>
+            </div>
+            <p class="text-lg white single-animation">여행, 출장, 늦은 퇴근에도 걱정마세요! 가족같은 펫시터가 내 아이와 함께합니다</p>
+            <div class="down_button"><i class="fas fa-angle-down"></i></div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="about__inner">
+            <div class="container about__top">
+                <div class="about__left animate-left">
+                    <p class="text-lg gray">반려견과 당신을 위한</p>
+                    <h1 class="headline">Petland</h1>
+                    <div class="separator">
+                        <div class="line color"></div>
+                        <i class="fas fa-paw text-md icolor"></i>
+                        <div class="line color"></div>
+                    </div>
+                </div>
+                <div class="about__right animate-right">
+                    <p class="about__description text-lg">
+                        <span>
+                            혼자 남겨진 반려동물을 생각하며, 외출을 망설인 적이 있으신가요?<br>
+                            이제는 와요 펫시터에게 맡기고, 여러분의 소중한 일상을 마음 편히 보내세요
+                        </span>
+                        <br><br>
+                        <span>
+                            고객 예약 관리, 일지 쓰기, 수입 통계, 페이지 관리 등 앱 내의 다양한 기능들을
+                            세부적으로 알려드려 펫시터로 어려움 없이 활동할 수 있도록 하고 있습니다.
+                            <br>또한, 상황별 대처방법과 펫시팅 단계별 주의 사항 및 방법 등을 통해
+                            펫시터로 전문적으로 활동하는데 있어 어려움이 없도록 도와드립니다
+                        </span>
+                        <br><br>
+                        <span>
+                            바로 돌봄, 예약 돌봄, 정기 돌봄까지 언제 어디서든 원하시는 방법으로
+                            ‘Petland’ 방문 펫시터 서비스를 예약할 수 있어요
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <!-- 이미지 가로 슬라이드 추가할 것 -->
+            <div class="about__bottom animate-bottom-1 slide">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="petsitter">
+        <div class="container">
+            <div class="petsitter__top animate-top">
+                <p class="text-lg gray">믿을 수 있고, 안심할 수 있는</p>
+                <h1 class="headline">Pesitter</h1>
+                <div class="separator">
+                    <div class="line color"></div>
+                    <i class="fas fa-paw text-md icolor"></i>
+                    <div class="line color"></div>
+                </div>
+            </div>
+            <div class="petsitter__bottom">
+                <div class="petsitter__cards">
+                    <div class="card animate-bottom-card-1">
+                        <p class="text-sm">01</p>
+                        <h2 class="text-lg">4단계 신원 검증</h2>
+                        <p class="text-md gray">신분증 사본 제출, 등초본 인증, 신원 보증부대 및 펫시터 계약서로 신원을 4단계 검증합니다</p>
+                    </div>
+                    <div class="card animate-bottom-card-2">
+                        <p class="text-sm">02</p>
+                        <h2 class="text-lg">모든 돌봄 과정 촬영</h2>
+                        <p class="text-md gray">펫시터의 카메라 촬영을 의무화하고 있으며 모든 과정이 촬영되어 실시간으로 중계됩니다</p>
+                    </div>
+                    <div class="card animate-bottom-card-3">
+                        <p class="text-sm">03</p>
+                        <h2 class="text-lg">최고 전문진과 교육 협업</h2>
+                        <p class="text-md gray">TV 동물장농 출연중이신 송종찬 대표님과 펫시터 이론 및 실습 교육을 협업하고 있습니다</p>
+                    </div>
+                    <div class="card animate-bottom-card-4">
+                        <p class="text-sm">04</p>
+                        <h2 class="text-lg">안전 보상 프로그램</h2>
+                        <p class="text-md gray">서비스 이용중 예상치 못한 문제 발생시 체계적인 안전 보상 프로그램이 적용됩니다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="colors">
+        <div class="colors__top container animate-top-3">
+            <p class="text-lg gray">최고의 펫시터만 선정하여 매칭해 드립니다.</p>
+            <h1 class="headline">Petland</h1>
+            <div class="separator">
+                <div class="line color"></div>
+                <i class="fas fa-paw text-md icolor"></i>
+                <div class="line color"></div>
+            </div>
+        </div>
+        <div class="colors__bottom animate-bottom">
+            <div class="color-left">
+                <a class="colors cherry">
+                    <img src="{{ url_for('static', filename='img/cherry.jpg') }}">
+                    <div class="colors__description">
+                        <p class="logo white">모든 산책 과정을<br> 실시간 Live로 보세요</p>
+                    </div>
+                    <div class="colors__full hide full_cherry">
+                        <div class="full__top">
+                            <i class="fas fa-times"></i>
+                            <h1 class="headline white">실시간 Live 서비스</h1>
+                            <div class="separator">
+                                <div class="line color"></div>
+                                <i class="fas fa-paw text-md icolor"></i>
+                                <div class="line color"></div>
+                            </div>
+                        </div>
+                        <div class="full__bottom">
+                            <div class="full__img">
+                                <img src="{{ url_for('static', filename='img/cherry.jpg') }}">
+                            </div>
+                            <div class="text-lg white">
+                                산책 서비스에만 있는 특별한 기능, 실시간 GPS 이동경로를 경험해보세요
+                                <br>
+                                지금 어디 위치에 있는지, 배변 여부까지 해당 위치에 실시간으로 기록됩니다
+                                <br>
+                                실시간으로 촬영되는 산책 LIVE 영상도 보며 강아지의 행복한 산책을 함께하세요
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="colors orange">
+                    <img src="{{ url_for('static', filename='img/orange.jpg') }}">
+                    <div class="colors__description">
+                        <p class="logo white">언제 어디서든<br> 펫시터를 부르세요</p>
+                    </div>
+                    <div class="colors__full hide full_orange">
+                        <div class="full__top">
+                            <i class="fas fa-times"></i>
+                            <h1 class="headline white">언제 어디서든<br> 펫시터를 부르세요</h1>
+                            <div class="separator">
+                                <div class="line color"></div>
+                                <i class="fas fa-paw text-md icolor"></i>
+                                <div class="line color"></div>
+                            </div>
+                        </div>
+                        <div class="full__bottom">
+                            <div class="full__img">
+                                <img src="{{ url_for('static', filename='img/orange.jpg') }}">
+                            </div>
+                            <div class="text-lg white">
+                                강아지의 삶에 가장 중요한 산책을 바쁜 일상으로 인해 자주 미루셨나요?<br>
+                                이제는 펫랜드 시터에게 강아지의 안전하고 즐거운 산책을 맡겨보세요<br>
+                                바로 산책, 예약 산책, 정기 산책까지 언제 어디서든 원하시는 방법으로 방문 서비스를 예약할 수 있어요
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="color-right">
+                <a class="colors gray">
+                    <img src="{{ url_for('static', filename='img/gray.jpg') }}">
+                    <div class="colors__description">
+                        <p class="logo white">안전한 산책과 함께<br> 깔끔한 마무리</p>
+                    </div>
+                    <div class="colors__full hide full_gray">
+                        <div class="full__top">
+                            <i class="fas fa-times"></i>
+                            <h1 class="headline white">안전한 산책과 함께<br> 깔끔한 마무리</h1>
+                            <div class="separator">
+                                <div class="line color"></div>
+                                <i class="fas fa-paw text-md icolor"></i>
+                                <div class="line color"></div>
+                            </div>
+                        </div>
+                        <div class="full__bottom">
+                            <div class="full__img">
+                                <img src="{{ url_for('static', filename='img/gray.jpg') }}">
+                            </div>
+                            <div class="text-lg white">
+                                펫랜드의 모든 펫시터는 문화교육원의 산책 전문 교육을 수료하였으며, <br>
+                                산책 안전 매뉴얼에 따라 산책하고, 안전을 위해 2중 가드줄을 착용하고 있어요.<br>
+                                산책이 종료된 후에는, 집이 더러워지지 않도록 발을 깨끗이 닦아 마무리해요.
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="colors yellow">
+                    <img src="{{ url_for('static', filename='img/yellow.jpg') }}">
+                    <div class="colors__description">
+                        <p class="logo white">반려동물 성향에 맞춰<br> 섬세하게 돌봐드려요</p>
+                    </div>
+                    <div class="colors__full hide full_yellow">
+                        <div class="full__top">
+                            <i class="fas fa-times"></i>
+                            <h1 class="headline white">반려동물 성향에 맞춰<br> 섬세하게 돌봐드려요</h1>
+                            <div class="separator">
+                                <div class="line color"></div>
+                                <i class="fas fa-paw text-md icolor"></i>
+                                <div class="line color"></div>
+                            </div>
+                        </div>
+                        <div class="full__bottom">
+                            <div class="full__img">
+                                <img src="{{ url_for('static', filename='img/yellow.jpg') }}">
+                            </div>
+                            <div class="text-lg white">
+                                사람을 좋아하는 댕댕이부터, 낯선 사람을 무서워 하는 소심냥까지<br>
+                                반려 동물의 종과 성향에 따라 맞춤 돌봄을 진행하며,<br>
+                                화장실과 음수량 등 신경써야 할 부분을 상세히 작성해주시면<br>
+                                방문 펫시터가 요청사항에 맞춰 세심하게 돌봄을 진행해드립니다.
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="reservation">
+        <div class="container">
+            <div class="reservation__content">
+                <p class="text-extra-lg white animate-top-button">
+                    " 혼자 남겨진 반려동물을 생각하며, 외출을 망설인 적이 있으신가요?<br>이제는 와요에게 맡기고, 여러분의 소중한 일상을 마음 편히 보내세요 "
+                </p>
+                <a href="/reservation" class="reservation__btn animate-bottom-button">
+                    <span class="text-md white">예약하러 가기</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- google map -->
+    <div id="map">
+    </div>
+    {% endblock %}
+    {% block script %}
+    <script>
+        function initMap() {
+            var Pet = { lat: 37.490049, lng: 126.927070 };
+            var map = new google.maps.Map(
+                document.getElementById('map'), { zoom: 15, center: Pet });
+
+            var marker = new google.maps.Marker({ position: Pet, map: map, label: "Petland" });
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY1HHWoGR4FY1pQQirukx7kn9l9dUQrds&callback&callback&callback=initMap">
+        </script>
+    <script src="{{ url_for('static', filename='js/colors.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+    {% endblock %}
+</body>

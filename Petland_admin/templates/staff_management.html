@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petland - Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}">
+    <script src="https://kit.fontawesome.com/72c88d65e7.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header id="header">
+        <a href="/reservation" class="header__logo">
+            <p class="logo">Petland</p>
+        </a>
+        <div class="user_info">
+            <span class="user_name">{{ user | safe }}님</span>
+            <a class="logout" href="/logout">
+                <span>Logout</span>
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <section id="navbar">
+            <ul class="nav__menu">
+                <li class="nav__item selected">
+                    <a href="/reservation" class="nav__link">
+                        <i class="far fa-calendar-alt"></i>
+                        예약관리
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/customer" class="nav__link">
+                        <i class="fas fa-user-alt"></i>고객관리
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="/staff" class="nav__link">
+                        <i class="fas fa-dog"></i>펫시터관리
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section id="content">
+            <div class="container">
+                <div class="content__title">
+                    <p>TABLE STAFF</p>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>펫시터 번호</th>
+                            <th>펫시터 이름</th>
+                            <th>연락처</th>
+                            <th>지역</th>
+                            <th>삭제</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {{ content | safe }}
+                        </tr>
+                    </tbody>
+                </table>
+                <form action="/staff" method="GET" class="input">
+                    <div class="input-container">
+                        <input type="hidden" name="cmd" value="search">
+                        <input type="text" id="input_name" class="input_name" name=name placeholder="펫시터 이름">
+                        <button type="submit" class="search">검 색</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+</body>
+
+</html>

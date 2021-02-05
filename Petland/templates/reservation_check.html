@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+<head>
+    {% block extrahead %}
+    <title>petland > 예약조회</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/reservation_check.css') }}">
+    <script src="https://kit.fontawesome.com/72c88d65e7.js" crossorigin="anonymous"></script>
+    {% endblock %}
+</head>
+
+<body>
+    {% block section %}
+    <section id="form">
+        <div class="sitemap">
+        </div>
+        <div class="container">
+            <div class="title">
+                <h1 class="text-extra-lg">예약조회 / 취소</h1>
+                <div class="line"></div>
+            </div>
+            <form action="/reservation_check" name="form" method="POST" class="text-md">
+                <label for="name">이름</label>
+                <input type="text" name="name" id="name" required>
+                <br>
+                <label for="phone">전화번호</label>
+                <input type="tel" name="phone" id="phone" placeholder="번호만 입력하세요" pattern="[0-9]{3}[0-9]{4}[0-9]{4}"
+                    required>
+                <br>
+                <div class="line"></div>
+                <button type="button" class="reservation_check__btn">예약확인</button>
+            </form>
+        </div>
+    </section>
+    {% endblock %}
+    {% block script %}
+    <script>
+        const button = document.querySelector(".reservation_check__btn");
+        let err = "{{ err | safe }}";
+        if (!(err == "")) {
+            alert(err);
+        }
+        button.addEventListener("click", () => {
+            // const form = document.form;
+            // form.submit();
+            if (noValue()) {
+                const form = document.form;
+                form.submit();
+            }
+        });
+
+        function noValue() {
+            let name = document.querySelector("#name").value;
+            let phone = document.querySelector("#phone").value;
+
+            if (name == "" || phone == "") {
+                alert("정보를 모두 입력해주세요.");
+                return false;
+            }
+            return true;
+        };
+    </script>
+    {% endblock %}
+</body>
+
+</html>
