@@ -42,3 +42,5 @@
 ## **Developers**
  * (Front) 이종현 이소애
  * (Back) 변해성, 송종천
+
+###### check_mod.py get_conn() 함수에서 DB 아이디, 패스워드 및 서버 ip 까지 입력해야한다.
